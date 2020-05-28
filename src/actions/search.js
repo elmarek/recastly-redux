@@ -5,8 +5,15 @@ import YOUTUBE_API_KEY from '../config/youtube.js';
 
 
 var handleVideoSearch = (q) => {
- 
+
   //TODO:  Write an asynchronous action to handle a video search!
+  // return a function that uses 'q' as query for search
+  return (dispatch) => {
+    searchYouTube({YOUTUBE_API_KEY, q}, (videos) => {
+      dispatch(changeVideoList(videos));
+      dispatch(changeVideo(videos[0]));
+    })
+ };
 };
 
 export default handleVideoSearch;
